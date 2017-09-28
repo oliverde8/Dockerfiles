@@ -39,15 +39,16 @@ to the docker.
         -e MP_TITLE=TmCanyon@nadeo \
         -e MP_GAME_SETTINGS=MatchSettings/TMCanyonA.txt \
         -e MP_CONFIG=default.config.xml \
-        -p 2350:2350 -p 2350:2350/udp
-        -v ./mp-data:/var/maniaplanet/UserData
+        -p 2350:2350 -p 2350:2350/udp \
+        -v ./mp-data:/var/maniaplanet/UserData \
+        oliverde8//mp-dedicated
 ```
 
 ### Using docker compose
 
 ```yaml
 dedicated:
-    build: docker/mp_dedicated
+    build: oliverde8//mp-dedicated
     environment:
         MP_LOGIN: my_server1
         MP_PASSWORD: my_server1_password
