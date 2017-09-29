@@ -29,7 +29,9 @@ RUN  chmod +x run.sh
 #
 # Volumes not to loose data.
 #
-VOLUME /var/maniaplanet/UserData
+VOLUME /var/maniaplanet/UserData/Maps
+VOLUME /var/maniaplanet/UserData/Config
+VOLUME /var/maniaplanet/UserData/Scripts
 VOLUME /var/maniaplanet/Logs
 
 #      game          | p2p         | xml-rpc

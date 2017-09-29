@@ -5,6 +5,10 @@ This image is heavily inspired by MiniGod's docker file witch is avaible here : 
 Main differences are : 
 * Images uses latest version (uses MP url that always point to the last version). 
 * Uses environment variables to allow usage with docker-compose
+* tags are used for each environment/title
+
+**You can use the latest tags to base your own images on but, you can't use it as it is.** 
+You will need to use one of the tags.
 
 ## Required options 
 
@@ -22,10 +26,10 @@ Main differences are :
 
 ### Volumes
 
-Since MP4 the dedicated server comes without any title pack pre installed. YOu need to share volumes in order to add those
-to the docker.
-
-* **-v ./mp-data:/var/maniaplanet/UserData**
+* **-v ./mp-data/Maps:/var/maniaplanet/UserData/Maps**
+* **-v ./mp-data/Config:/var/maniaplanet/UserData/Config**
+* **-v ./mp-data/Scripts:/var/maniaplanet/UserData/Scripts**
+* **-v ./mp-data/Logs:/var/maniaplanet/Logs**
 
 ## Exemple 
 
@@ -40,15 +44,15 @@ to the docker.
         -e MP_GAME_SETTINGS=MatchSettings/TMCanyonA.txt \
         -e MP_CONFIG=default.config.xml \
         -p 2350:2350 -p 2350:2350/udp \
-        -v ./mp-data:/var/maniaplanet/UserData \
-        oliverde8//mp-dedicated
+        -v ./mp-data/Maps:/var/maniaplanet/UserData/Maps \
+        oliverde8/mp-dedicated:TmCanyon
 ```
 
 ### Using docker compose
 
 ```yaml
 dedicated:
-    build: oliverde8//mp-dedicated
+    build: oliverde8/mp-dedicated:TmCanyon
     environment:
         MP_LOGIN: my_server1
         MP_PASSWORD: my_server1_password
