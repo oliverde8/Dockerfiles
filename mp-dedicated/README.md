@@ -72,6 +72,17 @@ dedicated:
         MP_TITLE: TmCanyon@nadeo
         MP_GAME_SETTINGS: MatchSettings/TMCanyonA.txt@nadeo
         MP_CONFIG: default.config.xml
+	ports:
+	    - "2350:2350"
+	    - "2350:2350/udp"
     volumes:
-        - ./docker/data/mp:/var/maniaplanet/UserData
+        - ./docker/data/UserData/Maps:/var/maniaplanet/UserData/Maps
+        - ./docker/data/UserData/Config:/var/maniaplanet/UserData/Config
+        - ./docker/data/UserData/Scripts:/var/maniaplanet/UserData/Scripts
 ```
+
+## Using with server controller. 
+
+You can use this image with a server controller, for it to work you need to allow remote access to the xmlrpc of the dedicated server.
+
+Copty the this file [](./default.config.yml) into `./mp-data/Config` and restart the docker. 
