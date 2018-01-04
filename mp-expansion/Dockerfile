@@ -32,7 +32,8 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN echo 'alias sf="php bin/console"' >> ~/.bashrc
 
 # Install eXpansion2.
-RUN git clone https://github.com/eXpansionPluginPack/eXpansion2.git /var/expansion
+RUN git clone https://github.com/eXpansionPluginPack/eXpansion-application.git /var/expansion
+RUN git checkout 2.0
 
 # Apply default parameters.
 COPY parameters.yml /var/expansion/app/config/

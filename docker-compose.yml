@@ -1,0 +1,4 @@
+php:
+    build: mp-expansion/
+    volumes:
+        - ./:/var/www/expansion
