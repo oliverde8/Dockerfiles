@@ -29,9 +29,6 @@ fi
 
 echo "=> Going to for: ${DEDI_HOST}:${DEDI_PORT} with user SuperAdmin"
 
-echo "Updating database schema"
-bin/console doctrine:schema:update --dump-sql --force
-
 #
 # MP dedicated may take some time to start.
 #
@@ -39,4 +36,4 @@ echo "Waiting a 30 sec for dedicated to start ..."
 sleep 30s
 
 echo "Starting eXpansion..."
-bin/console eXpansion:run --env=prod
+bin/run.sh
