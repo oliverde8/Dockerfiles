@@ -33,13 +33,12 @@ RUN echo 'alias sf="php bin/console"' >> ~/.bashrc
 
 # Install eXpansion2.
 RUN git clone https://github.com/eXpansionPluginPack/eXpansion-application.git /var/expansion
-RUN git checkout 2.0
 
 # Apply default parameters.
 COPY parameters.yml /var/expansion/app/config/
 
 # Install using composer...
-RUN composer install
+RUN composer update --prefer-dist --prefer-stable --no-suggest --no-dev -o
 
 # Copy custom script to launch expansion.
 COPY ./run.sh /var/expansion/run.sh

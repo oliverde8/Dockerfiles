@@ -29,11 +29,5 @@ fi
 
 echo "=> Going to for: ${DEDI_HOST}:${DEDI_PORT} with user SuperAdmin"
 
-#
-# MP dedicated may take some time to start.
-#
-echo "Waiting a 30 sec for dedicated to start ..."
-sleep 30s
-
 echo "Starting eXpansion..."
 bin/run.sh
