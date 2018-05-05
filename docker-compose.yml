@@ -1,4 +1,4 @@
 php:
     build: mp-expansion/
     volumes:
-        - ./:/var/www/expansion
+        - ${PWD}/data/expansion/app:/var/expansion/app

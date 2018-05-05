@@ -44,4 +44,9 @@ RUN composer update --prefer-dist --prefer-stable --no-suggest --no-dev -o
 COPY ./run.sh /var/expansion/run.sh
 RUN  chmod +x run.sh
 
+RUN mkdir app_backup
+RUN mv app/* app_backup/
+
+VOLUME /var/expansion/app
+
 ENTRYPOINT ["./run.sh"]

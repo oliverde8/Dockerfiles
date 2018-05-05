@@ -27,7 +27,10 @@ if [ -z "$DEDI_PASSWORD" ]; then
     export DEDI_PASSWORD="SuperAdmin"
 fi
 
-echo "=> Going to for: ${DEDI_HOST}:${DEDI_PORT} with user SuperAdmin"
+echo "Preparing app configs"
+cp app_backup/* app/ -r
+
+echo "=> Going to use: ${DEDI_HOST}:${DEDI_PORT} with user SuperAdmin"
 
 echo "Starting eXpansion..."
 bin/run.sh
