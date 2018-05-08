@@ -11,9 +11,11 @@ RUN apt-get update \
 RUN docker-php-ext-install \
     intl \
     mbstring \
-    zip
+    zip \
+    pdo \
+    pdo_mysql
 
-# Memory Limit
+# Memory Limit for cli usage.
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 
 # Install Composer
@@ -21,12 +23,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer --version
 
 # Set timezone
-RUN rm /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
-RUN "date"
-
-# Type docker-php-ext-install to see available extensions
-RUN docker-php-ext-install pdo pdo_mysql
+RUN rm /etc/localtime \
+    && ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime \
+    && "date"
 
 # Add a alias to lake it easier to use sf commands
 RUN echo 'alias sf="php bin/console"' >> ~/.bashrc
@@ -44,8 +43,10 @@ RUN composer update --prefer-dist --prefer-stable --no-suggest --no-dev -o
 COPY ./run.sh /var/expansion/run.sh
 RUN  chmod +x run.sh
 
-RUN mkdir app_backup
-RUN mv app/* app_backup/
+RUN mkdir app_backup \
+    && cp -R app/*  app_backup \
+    && cp app/config/bundles.yml.dist app/config/bundles.yml
+    && cp app/config/expansion.yml.dist app/config/expansion.yml
 
 VOLUME /var/expansion/app
 
