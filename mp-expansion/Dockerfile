@@ -45,7 +45,7 @@ RUN  chmod +x run.sh
 
 RUN mkdir app_backup \
     && cp -R app/*  app_backup \
-    && cp app/config/bundles.yml.dist app/config/bundles.yml
+    && cp app/config/bundles.yml.dist app/config/bundles.yml \
     && cp app/config/expansion.yml.dist app/config/expansion.yml
 
 VOLUME /var/expansion/app
