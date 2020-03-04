@@ -4,6 +4,7 @@ WORKDIR /var/expansion
 RUN apt-get update \
      && apt-get install -y \
 	git \
+	wget \
 	unzip \
 	libicu-dev \
     zlib1g-dev
@@ -31,13 +32,13 @@ RUN rm /etc/localtime \
 RUN echo 'alias sf="php bin/console"' >> ~/.bashrc
 
 # Install eXpansion2.
-RUN git clone https://github.com/eXpansionPluginPack/eXpansion-application.git /var/expansion
+RUN wget https://github.com/eXpansionPluginPack/eXpansion2/releases/download/2.0.0.0-beta4/eXpansion-v2.0.0.0-beta4.zip -qO /tmp/exp.zip
+RUN unzip -quo /tmp/exp.zip -d .
+RUN rm /tmp/exp.zip
+RUN ls
 
 # Apply default parameters.
 COPY parameters.yml /var/expansion/app/config/
-
-# Install using composer...
-RUN composer update --prefer-dist --prefer-stable --no-suggest --no-dev -o
 
 # Copy custom script to launch expansion.
 COPY ./run.sh /var/expansion/run.sh
