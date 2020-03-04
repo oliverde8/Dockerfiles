@@ -9,12 +9,7 @@ RUN apt-get update \
 	libicu-dev \
     zlib1g-dev
 
-RUN docker-php-ext-install \
-    intl \
-    mbstring \
-    zip \
-    pdo \
-    pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 
 # Memory Limit for cli usage.
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
