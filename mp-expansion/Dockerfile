@@ -1,4 +1,4 @@
-FROM php:7.0-cli
+FROM php:7.4-cli
 WORKDIR /var/expansion
 
 RUN apt-get update \
