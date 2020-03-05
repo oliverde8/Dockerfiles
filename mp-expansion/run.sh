@@ -33,4 +33,4 @@ cp app_backup/* app/ -r
 echo "=> Going to use: ${DEDI_HOST}:${DEDI_PORT} with user SuperAdmin"
 
 echo "Starting eXpansion..."
-bin/run.sh
+./bin/run.sh

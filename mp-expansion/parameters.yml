@@ -5,11 +5,27 @@ parameters:
     database_name: %env(DATABASE_NAME)%
     database_user: %env(DATABASE_USER)%
     database_password: %env(DATABASE_PASSWORD)%
+    database_driver: "mysql"
 
     dedicated_host: %env(DEDI_HOST)%
     dedicated_port: %env(DEDI_PORT)%
     dedicated_timeout: 5
     dedicated_user: SuperAdmin
     dedicated_password: %env(DEDI_PASSWORD)%
+    dedicated_connection_type: remote
+    color_enabled: truei
 
-    color_enabled: true
+oneup_flysystem:
+    adapters:
+        dedicated_user_data:
+            local:
+                directory: /var/maniaplanet/UserData/
+        expansion_config:
+            local:
+                directory: '%kernel.root_dir%/../var/expansion/config'
+    filesystems:
+        dedicated_user_data:
+            adapter: dedicated_user_data
+        expansion_config:
+            adapter: expansion_config
+

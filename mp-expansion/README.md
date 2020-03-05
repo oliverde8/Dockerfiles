@@ -27,36 +27,7 @@ These variables are optional.
 
 ### Using docker compose
 
-```yaml
-exp:
-    build: oliverde8/mp-expansion
-    links:
-        - mysql
-        - dedicated
-
-dedicated:
-    build: oliverde8/mp-dedicated
-    environment:
-        MP_LOGIN: my_server1
-        MP_PASSWORD: my_server1_password
-        MP_PORT: 2350
-        MP_TITLE: TmCanyon@nadeo
-        MP_GAME_SETTINGS: MatchSettings/TMCanyonA.txt@nadeo
-        MP_CONFIG: default.config.xml
-    volumes:
-        - ./docker/data/mp:/var/maniaplanet/UserData
-        
-mysql:
-    image: mysql:5.7
-    environment:
-        MYSQL_ROOT_PASSWORD: ""
-        MYSQL_DATABASE: expansion
-        MYSQL_USER: root
-        MYSQL_PASSWORD: ""
-        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    volumes:
-        - ./docker/data/mysql:/var/lib/mysql
-```
+See example/docker-compose.yml file
 
 ## TODO
 

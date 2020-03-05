@@ -37,7 +37,7 @@ COPY parameters.yml /var/expansion/app/config/
 
 # Copy custom script to launch expansion.
 COPY ./run.sh /var/expansion/run.sh
-RUN  chmod +x run.sh
+RUN  chmod +x run.sh && chmod +x -R bin
 
 RUN mkdir app_backup \
     && cp -R app/*  app_backup \

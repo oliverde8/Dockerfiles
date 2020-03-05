@@ -1,4 +1,0 @@
-php:
-    build: mp-expansion/
-    volumes:
-        - ${PWD}/data/expansion/app:/var/expansion/app
